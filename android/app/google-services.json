@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "584248037686",
+    "project_id": "der-homberger-schwarzes-brett",
+    "storage_bucket": "der-homberger-schwarzes-brett.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584248037686:android:513560dcaf4225c77be397",
+        "android_client_info": {
+          "package_name": "de.carldressler.der_homberger_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584248037686-m0mllp0877gsnbusp6fks6baurheahrn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0S2M23f2dihfgzufFspLQjHxRzOkptYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584248037686-m0mllp0877gsnbusp6fks6baurheahrn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
