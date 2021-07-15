@@ -63,3 +63,8 @@ class Styles {
     padding: MaterialStateProperty.all(EdgeInsets.all(16)),
   );
 }
+
+class Breakpoints {
+  static const int desktopWidth = 1440;
+  static const int desktopHeight = 768;
+}

@@ -11,20 +11,18 @@ void main() {
 }
 
 class DerHombergerApp extends StatefulWidget {
-  const DerHombergerApp({Key? key}) : super(key: key);
+  const DerHombergerApp();
 
   @override
   _DerHombergerAppState createState() => _DerHombergerAppState();
 }
 
 class _DerHombergerAppState extends State<DerHombergerApp> {
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: FutureBuilder(
-        future: _initialization,
+        future: Firebase.initializeApp(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Text("Error while connecting to Firebase");

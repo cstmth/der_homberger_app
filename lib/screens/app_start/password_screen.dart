@@ -19,7 +19,8 @@ class _PasswordScreenState extends State<PasswordScreen> {
   @override
   Widget build(BuildContext context) {
     TextEditingController textController = TextEditingController();
-    AuthenticationState authState = Provider.of<AuthenticationState>(context, listen: false);
+    AuthenticationState authState =
+        Provider.of<AuthenticationState>(context, listen: false);
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -51,8 +52,9 @@ class _PasswordScreenState extends State<PasswordScreen> {
                   controller: textController,
                   obscureText: true,
                 ),
-                // TODO Change from web check to MediaQuery check based on height
-                kIsWeb ? Container(height: 128) : Expanded(child: Container()),
+                MediaQuery.of(context).size.height > Breakpoints.desktopHeight
+                    ? Container(height: 128)
+                    : Expanded(child: Container()),
                 TextButton(
                   onPressed: () {
                     authState.logInAsAdmin(textController.text);
