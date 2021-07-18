@@ -2,7 +2,6 @@ import 'package:der_homberger_app/providers/authentication_state.dart';
 import 'package:der_homberger_app/screens/admin/admin_overview_screen.dart';
 import 'package:der_homberger_app/screens/app_start/password_screen.dart';
 import 'package:der_homberger_app/screens/user/user_overview_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

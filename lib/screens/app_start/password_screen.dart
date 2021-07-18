@@ -13,9 +13,6 @@ class PasswordScreen extends StatefulWidget {
 }
 
 class _PasswordScreenState extends State<PasswordScreen> {
-  bool isUserLogin = true;
-  bool isFirstTry = true;
-
   @override
   Widget build(BuildContext context) {
     TextEditingController textController = TextEditingController();
@@ -29,12 +26,12 @@ class _PasswordScreenState extends State<PasswordScreen> {
         child: Align(
           alignment: Alignment.topCenter,
           child: Container(
-            constraints: BoxConstraints(maxWidth: 768),
+            constraints: BoxConstraints(maxWidth: Breakpoints.contentMaxWidth),
             child: Column(
               children: [
                 Container(height: 48),
                 Icon(
-                  isUserLogin ? Icons.shield_rounded : Icons.lock_rounded,
+                  Icons.shield_rounded,
                   size: 64,
                 ),
                 Container(height: 16),
@@ -47,7 +44,9 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 TextField(
                   decoration: InputDecoration(
                     labelText: "Passwort",
-                    errorText: isFirstTry ? null : "Das Passwort ist falsch!",
+                    errorText: authState.passwordWasWrong
+                        ? "Das Passwort ist falsch!"
+                        : null,
                   ),
                   controller: textController,
                   obscureText: true,
@@ -58,9 +57,6 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 TextButton(
                   onPressed: () {
                     authState.logInAsAdmin(textController.text);
-                    setState(() {
-                      isFirstTry = false;
-                    });
                   },
                   child: Text("Als Administrator einloggen"),
                   style: Styles.textButtonStyle,
@@ -68,10 +64,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 Container(height: 8),
                 ElevatedButton(
                   onPressed: () {
-                    authState.logInAsAdmin(textController.text);
-                    setState(() {
-                      isFirstTry = false;
-                    });
+                    authState.logInAsUser(textController.text);
                   },
                   child: Text("Einloggen"),
                   style: Styles.bigButtonStyle,

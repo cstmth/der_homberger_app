@@ -20,35 +20,36 @@ class DerHombergerApp extends StatefulWidget {
 class _DerHombergerAppState extends State<DerHombergerApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: FutureBuilder(
-        future: Firebase.initializeApp(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Text("Error while connecting to Firebase");
-          } else if (snapshot.connectionState == ConnectionState.done) {
-            return ChangeNotifierProvider<AuthenticationState>(
-              create: (context) => AuthenticationState(),
-              child: AuthenticationRouter(),
-            );
-          } else {
-            return ConnectingToFirebaseScreen();
-          }
+    return ChangeNotifierProvider<AuthenticationState>(
+      create: (context) => AuthenticationState(),
+      child: MaterialApp(
+        home: FutureBuilder(
+          future: Firebase.initializeApp(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              // TODO Proper error screen
+              return Text("Error while connecting to Firebase");
+            } else if (snapshot.connectionState == ConnectionState.done) {
+              return AuthenticationRouter();
+            } else {
+              return ConnectingToFirebaseScreen();
+            }
+          },
+        ),
+        debugShowCheckedModeBanner: false,
+        title: Constants.appName,
+        theme: Styles.theme,
+        builder: (context, child) {
+          if (child == null) return const SizedBox.shrink();
+
+          return GestureDetector(
+            onTap: () {
+              FocusManager.instance.primaryFocus?.unfocus();
+            },
+            child: child,
+          );
         },
       ),
-      debugShowCheckedModeBanner: false,
-      title: Constants.appName,
-      theme: Styles.theme,
-      builder: (context, child) {
-        if (child == null) return const SizedBox.shrink();
-
-        return GestureDetector(
-          onTap: () {
-            FocusManager.instance.primaryFocus?.unfocus();
-          },
-          child: child,
-        );
-      },
     );
   }
 }
