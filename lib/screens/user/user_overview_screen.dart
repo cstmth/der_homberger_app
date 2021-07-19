@@ -12,8 +12,24 @@ class UserOverviewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveScaffold(
-      title: "Beispiel",
-      drawer: Drawer(),
+      title: "Übersicht",
+      drawer: Drawer(
+        child: Column(children: [
+          DrawerHeader(child: Text("Header")),
+          Container(
+            height: 32,
+            child: BodyText1("Hi!"),
+          ),
+          Container(
+            height: 32,
+            child: BodyText1("Hi!"),
+          ),
+          Container(
+            height: 32,
+            child: BodyText1("Hi!"),
+          ),
+        ]),
+      ),
       body: SafeArea(
         minimum: EdgeInsets.all(16),
         child: Align(

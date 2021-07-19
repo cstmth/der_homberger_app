@@ -13,23 +13,29 @@ class ResponsiveScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          if (constraints.maxWidth > Breakpoints.desktopWidth) {
-            // TODO Gar kein Bock
-            return body;
-          } else {
-            return Scaffold(
-              body: body,
-              appBar: HombergerAppBar(title: "Beispiel"),
-              drawer: drawer,
-              drawerEnableOpenDragGesture: true,
-              drawerEdgeDragWidth: constraints.maxWidth / 4,
-            );
-          }
-        },
-      ),
+    HombergerAppBar appBar = HombergerAppBar(title: title);
+    bool isMobile =
+        MediaQuery.of(context).size.width <= Breakpoints.desktopWidth;
+
+    return Scaffold(
+      appBar: isMobile ? appBar : null,
+      drawer: isMobile ? drawer : null,
+      body: isMobile
+          ? body
+          : Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                drawer,
+                Expanded(
+                  child: Column(
+                    children: [
+                      appBar,
+                      Expanded(child: body),
+                    ],
+                  ),
+                )
+              ],
+            ),
     );
   }
 }
@@ -41,14 +47,21 @@ class HombergerAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: Colors.white,
-      centerTitle: true,
-      leading: IconButton(
-        icon: Icon(Icons.menu_rounded, color: Colors.black),
-        onPressed: () => Scaffold.of(context).openDrawer(),
+    bool isMobile =
+        MediaQuery.of(context).size.width <= Breakpoints.desktopWidth;
+
+    return Container(
+      child: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        leading: isMobile
+            ? IconButton(
+                icon: Icon(Icons.menu_rounded, color: Colors.black),
+                onPressed: () => Scaffold.of(context).openDrawer(),
+              )
+            : null,
+        title: Headline5(title),
       ),
-      title: Headline5(title),
     );
   }
 
