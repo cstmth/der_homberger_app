@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 
 class BodyText1 extends StatelessWidget {
   final String text;
+  final Color? color;
 
-  const BodyText1(this.text);
+  const BodyText1(this.text, {this.color});
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.bodyText1,
+      style: Theme.of(context).textTheme.bodyText1?.copyWith(color: color),
     );
   }
 }
@@ -56,16 +57,30 @@ class Headline5 extends StatelessWidget {
   }
 }
 
-class Caption extends StatelessWidget {
+class Overline extends StatelessWidget {
   final String text;
 
-  const Caption(this.text);
+  const Overline(this.text);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.caption,
+      style: Theme.of(context).textTheme.overline,
+    );
+  }
+}
+
+class Monospace extends StatelessWidget {
+  final String text;
+
+  const Monospace(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(fontFamily: "UbuntuMono"),
     );
   }
 }

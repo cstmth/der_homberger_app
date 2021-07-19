@@ -40,3 +40,6 @@ flutter:
         - asset: assets/fonts/Poppins-Medium.ttf
         - asset: assets/fonts/Poppins-Italic.ttf
         - asset: assets/fonts/Poppins-Regular.ttf
+    - family: UbuntuMono
+      fonts:
+        - asset: assets/fonts/UbuntuMono-Regular.ttf

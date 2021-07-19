@@ -1,6 +1,6 @@
 import 'package:der_homberger_app/providers/authentication_state.dart';
 import 'package:der_homberger_app/utility/constants.dart';
-import 'package:der_homberger_app/widgets/custom_text.dart';
+import 'package:der_homberger_app/widgets/text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

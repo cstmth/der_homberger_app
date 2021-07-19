@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 
 class AuthenticationState extends ChangeNotifier {
-  AuthType authType = AuthType.none;
+  AuthType? authType;
   bool passwordWasWrong = false;
 
   AuthenticationState() {
@@ -12,13 +12,13 @@ class AuthenticationState extends ChangeNotifier {
       print(event?.email);
       switch (event?.email) {
         case Constants.userEmail:
-          authType = AuthType.user;
+          authType = AuthType.USER;
           break;
         case Constants.adminEmail:
-          authType = AuthType.admin;
+          authType = AuthType.ADMIN;
           break;
-        case null:
-          authType = AuthType.none;
+        default:
+          authType = AuthType.NONE;
       }
 
       notifyListeners();
@@ -29,7 +29,7 @@ class AuthenticationState extends ChangeNotifier {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: Constants.userEmail,
-        password: password,
+        password: "Carli2907", // TODO Remove before release
       );
     } on FirebaseAuthException catch (error) {
       if (error.code == "wrong-password") {
@@ -43,9 +43,10 @@ class AuthenticationState extends ChangeNotifier {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: Constants.adminEmail,
-        password: password,
+        password: "Carli2907", // TODO Remove before release
       );
     } on FirebaseAuthException catch (error) {
+      print(error);
       if (error.code == "wrong-password") {
         passwordWasWrong = true;
         notifyListeners();
@@ -54,4 +55,4 @@ class AuthenticationState extends ChangeNotifier {
   }
 }
 
-enum AuthType { none, user, admin }
+enum AuthType { NONE, USER, ADMIN }

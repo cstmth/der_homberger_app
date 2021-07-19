@@ -1,5 +1,7 @@
 import 'package:der_homberger_app/providers/authentication_state.dart';
-import 'package:der_homberger_app/screens/app_start/connecting_to_firebase_screen.dart';
+import 'package:der_homberger_app/providers/position_state.dart';
+import 'package:der_homberger_app/screens/misc/error_screen.dart';
+import 'package:der_homberger_app/screens/misc/loading_screen.dart';
 import 'package:der_homberger_app/utility/constants.dart';
 import 'package:der_homberger_app/widgets/authentication_router.dart';
 import 'package:flutter/material.dart';
@@ -27,12 +29,20 @@ class _DerHombergerAppState extends State<DerHombergerApp> {
           future: Firebase.initializeApp(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              // TODO Proper error screen
-              return Text("Error while connecting to Firebase");
+              return ErrorScreen(
+                exception: snapshot.error,
+                stacktrace: StackTrace.current,
+                message:
+                    "Die Verbindung zum Server ist fehlgeschlagen. Sind Sie mit dem Internet verbunden?",
+              );
             } else if (snapshot.connectionState == ConnectionState.done) {
-              return AuthenticationRouter();
+              return ChangeNotifierProvider(
+                create: (context) => NavPositionState(),
+                child: AuthenticationRouter(),
+              );
             } else {
-              return ConnectingToFirebaseScreen();
+              return LoadingScreen(
+                  text: "Verbindung zum Server herstellen, bitte warten ...");
             }
           },
         ),

@@ -1,16 +1,22 @@
 # Der Homberger App
 
-A new Flutter project.
+This app helps drivers of a local public transport company to always have their timetables and company letters such as newsletters with them. 
 
-## Getting Started
+The app is based on a PDF system. Administrators can upload PDFs and set them as either general or line-specific. Riders can then retrieve these PDFs or even be notified in advance of the upload through push notifications.
 
-This project is a starting point for a Flutter application.
+## Technologies
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter (Dart)
+- Firebase
+  - Firebase Authentication
+  - Firebase Firestore
+  - Firebase Storage
+- Material Design Guidelines
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Screenshots
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Screenshots and GIFs will be supplied once I am done developing the app.
+
+## Demo
+
+I will happily show you the app in person or via call - please note that I can't hand out the login information because the PDFs stored can contain secret information.

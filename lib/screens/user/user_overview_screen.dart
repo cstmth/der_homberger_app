@@ -1,7 +1,7 @@
 import 'package:der_homberger_app/utility/constants.dart';
-import 'package:der_homberger_app/widgets/custom_text.dart';
+import 'package:der_homberger_app/widgets/text.dart';
 import 'package:der_homberger_app/widgets/list_element.dart';
-import 'package:der_homberger_app/widgets/scaffold.dart';
+import 'package:der_homberger_app/widgets/responsive_scaffold.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,23 +13,7 @@ class UserOverviewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveScaffold(
       title: "Übersicht",
-      drawer: Drawer(
-        child: Column(children: [
-          DrawerHeader(child: Text("Header")),
-          Container(
-            height: 32,
-            child: BodyText1("Hi!"),
-          ),
-          Container(
-            height: 32,
-            child: BodyText1("Hi!"),
-          ),
-          Container(
-            height: 32,
-            child: BodyText1("Hi!"),
-          ),
-        ]),
-      ),
+      drawer: HombergerDrawer(isAdmin: true),
       body: SafeArea(
         minimum: EdgeInsets.all(16),
         child: Align(

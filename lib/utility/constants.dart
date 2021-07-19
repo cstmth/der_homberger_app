@@ -49,9 +49,11 @@ class Styles {
           fontFamily: "Lato",
           fontSize: 16,
         ),
-        caption: TextStyle(
+        overline: TextStyle(
           fontFamily: "Lato",
+          color: Colors.black,
           fontSize: 12,
+          fontWeight: FontWeight.w600,
         )),
   );
 
