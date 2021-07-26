@@ -34,7 +34,7 @@ class ListElement extends StatelessWidget {
               children: [
                 BodyText1(title),
                 Container(height: 4),
-                Overline(caption),
+                Caption(caption),
               ],
             ),
             Expanded(child: Container()),

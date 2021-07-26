@@ -7,8 +7,10 @@ class AuthenticationState extends ChangeNotifier {
   bool passwordWasWrong = false;
 
   AuthenticationState() {
+    print("AuthState init");
+    FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
     FirebaseAuth.instance.authStateChanges().listen((event) {
-      print("Auth change");
+      print("AuthState change");
       print(event?.email);
       switch (event?.email) {
         case Constants.userEmail:
@@ -26,6 +28,8 @@ class AuthenticationState extends ChangeNotifier {
   }
 
   void logInAsUser(String password) async {
+    print("Logging in as User");
+
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: Constants.userEmail,
@@ -40,6 +44,8 @@ class AuthenticationState extends ChangeNotifier {
   }
 
   void logInAsAdmin(String password) async {
+    print("Logging in as Admin");
+
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: Constants.adminEmail,
