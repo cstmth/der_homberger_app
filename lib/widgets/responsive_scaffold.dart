@@ -81,7 +81,10 @@ class HombergerDrawer extends StatelessWidget {
     List<Widget> drawerContent = isAdmin
         // Admin drawer
         ? [
-            Headline5("Der Homberger App"),
+            Align(
+              alignment: Alignment.topCenter,
+              child: Headline5("Der Homberger App"),
+            ),
             Container(height: 32),
             DrawerElement(
               leading: Icons.home_rounded,
@@ -130,7 +133,10 @@ class HombergerDrawer extends StatelessWidget {
           ]
         // User drawer
         : [
-            Headline5("Der Homberger App"),
+            Align(
+              alignment: Alignment.topCenter,
+              child: Headline5("Der Homberger App"),
+            ),
             Container(height: 32),
             DrawerElement(
               leading: Icons.home_rounded,

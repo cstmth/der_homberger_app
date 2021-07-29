@@ -13,11 +13,9 @@ class AuthenticationRouter extends StatelessWidget {
   Widget build(BuildContext context) {
     AuthType? authType = Provider.of<AuthenticationState>(context).authType;
 
-    print("AuthRouter: $authType");
-    print("ST: ${StackTrace.current}");
     switch (authType) {
       case null:
-        return PasswordScreen(); //LoadingScreen(text: "Prüfe Authentifizierung, bitte warten ...");
+        return LoadingScreen(text: "Prüfe Authentifizierung, bitte warten ...");
       case AuthType.USER:
         return UserOverviewScreen();
       case AuthType.ADMIN:
