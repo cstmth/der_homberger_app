@@ -54,6 +54,11 @@ class Styles {
           color: Colors.black,
           fontSize: 12,
           fontWeight: FontWeight.w600,
+        ),
+        caption: TextStyle(
+          fontFamily: "Lato",
+          color: Colors.black,
+          fontSize: 12,
         )),
   );
 

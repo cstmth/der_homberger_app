@@ -73,16 +73,19 @@ class HombergerAppBar extends StatelessWidget implements PreferredSizeWidget {
 class HombergerDrawer extends StatelessWidget {
   final bool isAdmin;
 
-
   const HombergerDrawer({required this.isAdmin});
 
   @override
   Widget build(BuildContext context) {
     NavPosition? pos = Provider.of<NavPositionState>(context).currentPosition;
-
     List<Widget> drawerContent = isAdmin
         // Admin drawer
         ? [
+            Align(
+              alignment: Alignment.topCenter,
+              child: Headline5("Der Homberger App"),
+            ),
+            Container(height: 32),
             DrawerElement(
               leading: Icons.home_rounded,
               text: "Startseite",
@@ -130,6 +133,11 @@ class HombergerDrawer extends StatelessWidget {
           ]
         // User drawer
         : [
+            Align(
+              alignment: Alignment.topCenter,
+              child: Headline5("Der Homberger App"),
+            ),
+            Container(height: 32),
             DrawerElement(
               leading: Icons.home_rounded,
               text: "Startseite",
@@ -169,13 +177,11 @@ class HombergerDrawer extends StatelessWidget {
 
     return Drawer(
       elevation: 0,
-      child: Expanded(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: drawerContent,
-          ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: drawerContent,
         ),
       ),
     );
@@ -197,13 +203,13 @@ class DrawerElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 32,
+      height: 48,
       child: Row(
         children: [
           selected
               ? Icon(leading, color: Constants.primaryColor)
               : Icon(leading),
-          Container(width: 16),
+          Container(width: 32),
           selected
               ? BodyText1(text, color: Constants.primaryColor)
               : BodyText1(text),

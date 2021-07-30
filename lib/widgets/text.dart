@@ -71,6 +71,20 @@ class Overline extends StatelessWidget {
   }
 }
 
+class Caption extends StatelessWidget {
+  final String text;
+
+  const Caption(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: Theme.of(context).textTheme.caption,
+    );
+  }
+}
+
 class Monospace extends StatelessWidget {
   final String text;
 

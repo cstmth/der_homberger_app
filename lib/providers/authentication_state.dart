@@ -7,17 +7,19 @@ class AuthenticationState extends ChangeNotifier {
   bool passwordWasWrong = false;
 
   AuthenticationState() {
+    FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
     FirebaseAuth.instance.authStateChanges().listen((event) {
-      print("Auth change");
-      print(event?.email);
       switch (event?.email) {
         case Constants.userEmail:
+          print("Auth: User authenticated as USER");
           authType = AuthType.USER;
           break;
         case Constants.adminEmail:
+          print("Auth: User authenticated as ADMIN");
           authType = AuthType.ADMIN;
           break;
         default:
+          print("Auth: User logged out or is not logged in");
           authType = AuthType.NONE;
       }
 
