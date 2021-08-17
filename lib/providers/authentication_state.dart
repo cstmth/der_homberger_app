@@ -1,20 +1,19 @@
 import 'package:der_homberger_app/utility/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-class AuthenticationState extends ChangeNotifier {
+class AuthState extends ChangeNotifier {
   AuthType? authType;
   bool passwordWasWrong = false;
 
-  AuthenticationState() {
-    FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
+  AuthState() {
     FirebaseAuth.instance.authStateChanges().listen((event) {
       switch (event?.email) {
-        case Constants.userEmail:
+        case Strings.userEmail:
           print("Auth: User authenticated as USER");
           authType = AuthType.USER;
           break;
-        case Constants.adminEmail:
+        case Strings.adminEmail:
           print("Auth: User authenticated as ADMIN");
           authType = AuthType.ADMIN;
           break;
@@ -28,10 +27,14 @@ class AuthenticationState extends ChangeNotifier {
   }
 
   void logInAsUser(String password) async {
+    authType = AuthType.USER;
+    notifyListeners();
+
+    /*
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: Constants.userEmail,
-        password: "Carli2907", // TODO Remove before release
+        email: Strings.userEmail,
+        password: password,
       );
     } on FirebaseAuthException catch (error) {
       if (error.code == "wrong-password") {
@@ -39,13 +42,18 @@ class AuthenticationState extends ChangeNotifier {
         notifyListeners();
       }
     }
+    */
   }
 
   void logInAsAdmin(String password) async {
+    authType = AuthType.ADMIN;
+    notifyListeners();
+
+    /*
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: Constants.adminEmail,
-        password: "Carli2907", // TODO Remove before release
+        email: Strings.adminEmail,
+        password: password,
       );
     } on FirebaseAuthException catch (error) {
       print(error);
@@ -54,6 +62,16 @@ class AuthenticationState extends ChangeNotifier {
         notifyListeners();
       }
     }
+    */
+  }
+
+  void signOut(BuildContext context, {bool prompt = true}) {
+    if (prompt) {
+      // TODO Logout prompt implementieren
+    }
+
+    print("Logging out...");
+    FirebaseAuth.instance.signOut();
   }
 }
 

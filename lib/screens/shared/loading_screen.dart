@@ -1,5 +1,3 @@
-import 'package:der_homberger_app/widgets/text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoadingScreen extends StatelessWidget {
@@ -18,7 +16,7 @@ class LoadingScreen extends StatelessWidget {
             children: [
               CircularProgressIndicator(),
               Container(height: 32),
-              BodyText1(text),
+              Text(text),
             ],
           ),
         ),

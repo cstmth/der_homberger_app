@@ -9,13 +9,16 @@ class SimpleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
-        minimum: EdgeInsets.all(16),
         child: Align(
           alignment: Alignment.topCenter,
           child: Container(
-            constraints: BoxConstraints(maxWidth: Breakpoints.desktopWidth),
-            child: body,
+            constraints: BoxConstraints(maxWidth: Sizes.desktopWidth),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: body,
+            ),
           ),
         ),
       ),

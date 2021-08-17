@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 
 class NavPositionState extends ChangeNotifier {
-  NavPosition? currentPosition;
+  Position? _position;
+
+  set position(Position? position) {
+    _position = position;
+    notifyListeners();
+  }
+
+  Position? get position => _position;
 }
 
-enum NavPosition {
-  USER_UEBERSICHT,
+enum Position {
+  SETTINGS,
+
+  USER_HOME,
   USER_BETRAS,
   USER_ANORDNUNGEN,
   USER_WAGENKARTEN,
@@ -19,5 +28,7 @@ enum NavPosition {
   ADMIN_CREATE_COLLECTION,
   ADMIN_MANAGE_COLLECTIONS,
   ADMIN_CHANGE_USER_PASSWORD,
-  ADMIN_CHANGE_ADMIN_PASSWORD
+  ADMIN_CHANGE_ADMIN_PASSWORD,
+
+  NONE
 }

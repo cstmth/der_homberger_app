@@ -1,20 +1,5 @@
 import 'package:flutter/material.dart';
 
-class BodyText1 extends StatelessWidget {
-  final String text;
-  final Color? color;
-
-  const BodyText1(this.text, {this.color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: Theme.of(context).textTheme.bodyText1?.copyWith(color: color),
-    );
-  }
-}
-
 class Headline3 extends StatelessWidget {
   final String text;
 
@@ -57,6 +42,20 @@ class Headline5 extends StatelessWidget {
   }
 }
 
+class Headline6 extends StatelessWidget {
+  final String text;
+
+  const Headline6(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: Theme.of(context).textTheme.headline6,
+    );
+  }
+}
+
 class Overline extends StatelessWidget {
   final String text;
 
@@ -65,7 +64,7 @@ class Overline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
+      text.toUpperCase(),
       style: Theme.of(context).textTheme.overline,
     );
   }

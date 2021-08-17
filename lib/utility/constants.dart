@@ -1,95 +1,110 @@
 import 'package:flutter/material.dart';
 
-class Constants {
+class Strings {
   static const String appName = "Der Homberger App";
 
   static const String userEmail = "hombergeruser@carldressler.de";
   static const String adminEmail = "hombergeradmin@carldressler.de";
+}
 
-  static const Color primaryColor = Color(0xFFD93535);
-  static const Color accentColor = Color(0xFF1E3A8E);
+class AppColors {
+  static const Color primary = Color(0xFFD93535);
+  static const Color accent = Color(0xFF1E3A8E);
 
   static const Color darkGray = Color(0xFF555555);
   static const Color gray = Color(0xFFC4C4C4);
   static const Color lightGray = Color(0xFFF1F1F1);
+
+  static Color primaryWithAlpha = primary.withAlpha(64);
+  static Color accentWithAlpha = accent.withAlpha(64);
 }
 
 class Styles {
   static final ThemeData theme = ThemeData(
-    scaffoldBackgroundColor: Colors.white,
-    primaryColor: Constants.primaryColor,
-    dividerColor: Constants.lightGray,
+    dividerTheme: DividerThemeData(
+      color: AppColors.darkGray,
+    ),
     inputDecorationTheme: InputDecorationTheme(
-      contentPadding: EdgeInsets.all(16),
-      border: OutlineInputBorder(
-        borderSide: BorderSide(color: Constants.primaryColor),
-        borderRadius: BorderRadius.all(Radius.circular(12)),
+      contentPadding: EdgeInsets.all(16.0),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(width: 1),
+        borderRadius: bigBorderRadius,
+      ),
+      /*selected*/ border: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: AppColors.accent,
+          width: 1,
+        ),
+        borderRadius: bigBorderRadius,
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: AppColors.primary,
+          width: 1,
+        ),
+        borderRadius: bigBorderRadius,
       ),
     ),
     textTheme: TextTheme(
-        headline3: TextStyle(
-          color: Colors.black,
-          fontFamily: "Poppins",
-          fontSize: 32,
-          fontWeight: FontWeight.w600,
-        ),
-        headline4: TextStyle(
-          fontFamily: "Poppins",
-          color: Colors.black,
-          fontSize: 24,
-          fontWeight: FontWeight.w600,
-        ),
-        headline5: TextStyle(
-          fontFamily: "Poppins",
-          color: Colors.black,
-          fontSize: 20,
-          fontWeight: FontWeight.w500,
-        ),
-        bodyText1: TextStyle(
-          fontFamily: "Lato",
-          fontSize: 16,
-        ),
-        overline: TextStyle(
-          fontFamily: "Lato",
-          color: Colors.black,
-          fontSize: 12,
-          fontWeight: FontWeight.w600,
-        ),
-        caption: TextStyle(
-          fontFamily: "Lato",
-          color: Colors.black,
-          fontSize: 12,
-        )),
+      headline3: TextStyle(
+        color: Colors.black,
+        fontFamily: "Poppins",
+        fontSize: 32,
+        fontWeight: FontWeight.w600,
+      ),
+      headline4: TextStyle(
+        fontFamily: "Poppins",
+        color: Colors.black,
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+      ),
+      headline5: TextStyle(
+        fontFamily: "Poppins",
+        color: Colors.black,
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+      ),
+      headline6: TextStyle(
+        fontFamily: "Lato",
+        color: Colors.black,
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+      ),
+      bodyText2: TextStyle(
+        fontFamily: "Lato",
+        fontSize: 16,
+      ),
+      overline: TextStyle(
+        fontFamily: "Lato",
+        color: Colors.black,
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+      ),
+      caption: TextStyle(
+        fontFamily: "Lato",
+        color: Colors.black,
+        fontSize: 12,
+      ),
+    ),
   );
 
-  static final ButtonStyle bigButtonStyle = ButtonStyle(
-    backgroundColor: MaterialStateProperty.all(Constants.primaryColor),
-    fixedSize: MaterialStateProperty.all(Size(1024, 48)),
-    elevation: MaterialStateProperty.all(0),
-    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(12)),
-    )),
-  );
-
-  static final textButtonStyle = ButtonStyle(
-    foregroundColor: MaterialStateProperty.all(Colors.black),
-    overlayColor: MaterialStateProperty.all(Colors.black.withAlpha(64)),
-    padding: MaterialStateProperty.all(EdgeInsets.all(16)),
-  );
+  static BorderRadius smallBorderRadius = BorderRadius.circular(6.0);
+  static BorderRadius bigBorderRadius = BorderRadius.circular(12.0);
 }
 
-class Breakpoints {
-  static const double desktopWidth = 1440;
-  static const double desktopHeight = 768;
-  static const double contentMaxWidth = 768;
+class Sizes {
+  static const double desktopWidth = 1440.0;
+  static const double desktopHeight = 768.0;
+  static const double contentMaxWidth = 768.0;
+  static const double drawerInset = 16.0;
+  static const double complexScreenTopPadding = 16.0;
 }
 
 class HombergerIcons {
   static const Icon labelImportant = Icon(
     Icons.label_important_rounded,
-    color: Constants.accentColor,
+    color: AppColors.accent,
   );
 
-  static const Icon star =
-      Icon(Icons.star_rounded, color: Constants.primaryColor);
+  static const Icon star = Icon(Icons.star_rounded, color: AppColors.primary);
 }
